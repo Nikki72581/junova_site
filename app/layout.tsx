@@ -1,20 +1,28 @@
 import "./globals.css";
-import "./styles/junova.tokens.css";
-import type { Metadata } from "next";
+
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Junova",
-  description: "Modern systems, human sense.",
-  icons: { icon: "/favicon.svg", apple: "/apple-touch-icon.png" }
+export const metadata = {
+  title: "junova",
+  description: "cosmic automation.",
+  icons: {
+    icon: "/junova-logo.png", // Add favicon support
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={inter.className}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   );
 }
+
