@@ -16,9 +16,10 @@ export default function Header() {
   }, []);
 
   const links = [
-    { href: "#services", label: "Services" },
-    { href: "#process", label: "Process" },
-    { href: "#contact", label: "Contact" },
+  { href: "#manifesto", label: "Manifesto" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
+  { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -38,7 +39,7 @@ export default function Header() {
             className="rounded-lg"
             priority
           />
-          <span className="sr-only">junova</span>
+            <span className="font-bold text-xl text-gray-900">junova</span>
         </Link>
 
         {/* Desktop nav */}

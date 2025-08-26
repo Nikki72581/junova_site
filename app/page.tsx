@@ -71,6 +71,19 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+      </section>
+
+      {/* MANIFESTO */}
+      <section id="manifesto" className="mx-auto max-w-3xl px-4 md:px-6 py-14 md:py-16">
+        <h2 className="text-[22px] md:text-3xl font-semibold mb-4">Welcome to Junova</h2>
+        <div className="bg-white rounded-2xl border shadow-sm p-6 text-neutral-800 text-[15px] md:text-base">
+          <p className="mb-4">We believe consulting should feel like a friendship—built on trust, not a sales pitch. In a world where technology moves at lightning speed, you deserve answers that are honest, clear, and tailored just for you—no hidden agendas, no strings attached.</p>
+          <p className="mb-4">At Junova, we’re proudly independent. No publishers pulling the strings, no middlemen muddying the waters. We’re here to partner with businesses of all sizes, helping you tackle real challenges in eCommerce, ERP, custom development, reporting, and AI. No unnecessary complexity, no one-size-fits-all solutions—just real people who listen deeply and build alongside you.</p>
+          <p className="mb-4">Our mission is simple: to do meaningful work with wonderful people. We’re here to bring the human touch back to consulting, where fairness, clarity, and kindness matter just as much as technical know-how. We see automation as a tool to empower people, not replace them.</p>
+          <p className="mb-4">Junova is about building relationships rooted in trust, thoughtful processes, and genuine partnership. Together, we create smarter systems and stronger businesses—because your success should always feel personal, never transactional.</p>
+          <p className="mb-2 font-semibold">Let’s grow something great, together.</p>
+        </div>
       </section>
 
       {/* SERVICES */}
