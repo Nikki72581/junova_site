@@ -25,7 +25,7 @@ export default function Header() {
             className="rounded-lg"
             priority
           />
-          <span className="font-semibold tracking-tight text-base">junova</span>
+      
         </Link>
 
         {/* Desktop nav */}
