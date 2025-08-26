@@ -20,8 +20,8 @@ export default function Header() {
           <Image
             src="/junova-logo.png"
             alt="Junova"
-            width={40}
-            height={40}
+            width={80}
+            height={80}
             className="rounded-lg"
             priority
           />
