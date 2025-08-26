@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function HomePage() {
   const [sent, setSent] = useState(false);
@@ -13,7 +14,7 @@ export default function HomePage() {
   return (
     <div className="bg-neutral-50 text-neutral-900">
       {/* HERO */}
-      <section className="relative pt-10"> {/* pt-10 to breathe under sticky header */}
+      <section className="relative pt-10">
         {/* Soft brand blobs */}
         <div
           aria-hidden
@@ -33,31 +34,41 @@ export default function HomePage() {
         />
 
         <div className="relative mx-auto max-w-7xl px-4 md:px-6 py-16 md:py-24">
-          {/* REMOVED the tiny logo/wordmark row that sat here */}
+          {/* Big centered logo */}
+          <div className="flex flex-col items-center text-center">
+            <Image
+              src="/junova-logo.png"
+              alt="Junova"
+              width={160}
+              height={160}
+              priority
+              className="rounded-2xl shadow-sm"
+            />
+            <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
+              <span className="bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] bg-clip-text text-transparent">
+                Human. Clear. Shipped.
+              </span>
+            </h1>
+            <p className="mt-4 max-w-2xl text-base md:text-lg text-neutral-700">
+              Independent, senior help for ecommerce, ERP, and AI—delivered with real-world
+              pragmatism. No publishers pulling strings. No fluff.
+            </p>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            <span className="bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] bg-clip-text text-transparent">
-              Human. Clear. Shipped.
-            </span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-neutral-700">
-            Independent, senior help for ecommerce, ERP, and AI—delivered with real-world
-            pragmatism. No publishers pulling strings. No fluff.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center rounded-full px-5 py-2.5 text-white bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
-            >
-              Start a scope
-            </a>
-            <a
-              href="#process"
-              className="inline-flex items-center rounded-full px-5 py-2.5 border hover:bg-white transition"
-            >
-              See how we work
-            </a>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href="#contact"
+                className="inline-flex items-center rounded-full px-5 py-2.5 text-white
+                           bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
+              >
+                Start a scope
+              </a>
+              <a
+                href="#process"
+                className="inline-flex items-center rounded-full px-5 py-2.5 border hover:bg-white transition"
+              >
+                See how we work
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -167,7 +178,10 @@ export default function HomePage() {
               <div role="status" aria-live="polite" className="mt-6 rounded-lg border bg-neutral-50 p-4">
                 <p className="font-medium">Thanks! We got your message.</p>
                 <p className="text-sm text-neutral-700">
-                  We’ll reach out shortly. If it’s urgent, email <a className="underline" href="mailto:hello@junova.co">hello@junova.co</a>.
+                  We’ll reach out shortly. If it’s urgent, email{" "}
+                  <a className="underline" href="mailto:hello@junova.co">
+                    hello@junova.co
+                  </a>.
                 </p>
               </div>
             )}
@@ -175,7 +189,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER unchanged */}
+      {/* FOOTER */}
+      <footer className="mt-8 border-t">
+        <div className="mx-auto max-w-7xl px-4 md:px-6 py-10 grid gap-6 md:grid-cols-3 text-sm">
+          <div>
+            <div className="flex items-center gap-2">
+              <Image src="/junova-logo.png" width={24} height={24} alt="Junova" className="rounded" />
+              <strong>junova</strong>
+            </div>
+            <p className="mt-2 text-neutral-600">Modern systems, human sense.</p>
+          </div>
+          <nav className="grid grid-cols-2 gap-2">
+            <a href="#services" className="hover:underline">Services</a>
+            <a href="#process" className="hover:underline">Process</a>
+            <a href="#contact" className="hover:underline">Contact</a>
+            <a href="mailto:hello@junova.co" className="hover:underline">hello@junova.co</a>
+          </nav>
+          <div className="md:text-right text-neutral-600">© {new Date().getFullYear()} Junova</div>
+        </div>
+      </footer>
     </div>
   );
 }

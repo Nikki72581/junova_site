@@ -57,3 +57,4 @@ body{
   background: linear-gradient(90deg, var(--junova-from), var(--junova-to));
   border-radius: 999px;
 }
+html, body { scroll-behavior: smooth; }

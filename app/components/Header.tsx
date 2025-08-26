@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const links = [
     { href: "#services", label: "Services" },
@@ -14,18 +22,23 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+    <header
+      className={`sticky top-0 z-50 bg-white/80 backdrop-blur border-b transition-shadow ${
+        scrolled ? "shadow-sm" : ""
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label="Junova home">
+        <Link href="/" aria-label="Junova home" className="flex items-center gap-2">
+          {/* Icon-only lockup so the big hero logo doesn’t feel duplicated */}
           <Image
             src="/junova-logo.png"
             alt="Junova"
-            width={80}
-            height={80}
+            width={40}
+            height={40}
             className="rounded-lg"
             priority
           />
-      
+          <span className="sr-only">junova</span>
         </Link>
 
         {/* Desktop nav */}
@@ -38,7 +51,7 @@ export default function Header() {
           <a
             href="#contact"
             className="ml-2 inline-flex items-center rounded-full px-3 py-1.5 text-white
-                     bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
+                       bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
           >
             Start a scope
           </a>
