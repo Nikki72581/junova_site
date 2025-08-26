@@ -4,7 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  height: 100%;
-  background: var(--brand-bg);
+html,body{height:100%;}
+body{
+  background: var(--surface-1);
+  /* subtle grid + brand bloom */
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(110,58,255,.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(33,208,122,.10), transparent 60%),
+    linear-gradient(#fff,#fff);
+}
+
+/* Utilities */
+.bg-brand{background:var(--brand-gradient);}
+.text-ink{color:var(--brand-ink);}
+.card{
+  background:var(--surface-2);
+  border:1px solid var(--border-muted);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);
+}
+.section{padding:4rem 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem;}
+.hr-gradient{height:1px;background:linear-gradient(90deg,transparent,rgba(20,20,20,.10),transparent);}
+
+/* Pretty icon chip */
+.icon-chip{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--brand-gradient);
+  box-shadow:0 8px 24px rgba(110,58,255,.18);
+  display:grid;place-items:center;color:#fff;
 }
