@@ -34,3 +34,26 @@ body{
   box-shadow:0 8px 24px rgba(110,58,255,.18);
   display:grid;place-items:center;color:#fff;
 }
+:root {
+  --junova-from: #6E3AFF;
+  --junova-to: #21D07A;
+}
+
+.border-gradient {
+  border-bottom: 1px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, var(--junova-from), var(--junova-to)) border-box;
+}
+
+.active-underline {
+  position: relative;
+}
+.active-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--junova-from), var(--junova-to));
+  border-radius: 999px;
+}

@@ -1,196 +1,268 @@
-import Link from "next/link";
+"use client";
 
-export default function Page() {
+import React, { useState } from "react";
+import Image from "next/image";
+
+export default function HomePage() {
+  const [sent, setSent] = useState(false);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    // Replace this with your action (Formspree, Resend, server action, etc.)
+    setSent(true);
+  }
+
   return (
-    <main>
-      {/* Sticky glass header */}
-      <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-black/5">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <img src="/junova-wordmark.svg" alt="Junova" width={140} height={28} />
+    <div className="bg-neutral-50 text-neutral-900">
+      {/* HERO */}
+      <section className="relative">
+        {/* Soft brand blobs */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full blur-3xl opacity-30"
+          style={{
+            background:
+              "radial-gradient(45% 45% at 30% 30%, #6E3AFF 0%, rgba(110,58,255,0) 70%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full blur-3xl opacity-30"
+          style={{
+            background:
+              "radial-gradient(45% 45% at 70% 70%, #21D07A 0%, rgba(33,208,122,0) 70%)",
+          }}
+        />
+
+        <div className="mx-auto max-w-7xl px-4 md:px-6 py-20 md:py-28 relative">
+          <div className="flex items-center gap-3 mb-6">
+            <Image
+              src="/junova-logo.png"
+              alt="Junova"
+              width={36}
+              height={36}
+              className="rounded-xl"
+            />
+            <span className="text-sm font-medium text-neutral-600">junova</span>
           </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#services" className="opacity-80 hover:opacity-100">Services</a>
-            <a href="#process" className="opacity-80 hover:opacity-100">Process</a>
-            <a href="#contact" className="opacity-80 hover:opacity-100">Contact</a>
-            <a href="#contact"
-               className="px-3 py-1.5 rounded-lg text-white"
-               style={{ background: "var(--brand-gradient)" }}>
+
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <span className="bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] bg-clip-text text-transparent">
+              Human. Clear. Shipped.
+            </span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-neutral-700">
+            Independent, senior help for ecommerce, ERP, and AI—delivered with
+            real-world pragmatism. No publishers pulling strings. No fluff.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#contact"
+              className="inline-flex items-center rounded-full px-5 py-2.5 text-white bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
+            >
               Start a scope
             </a>
-          </nav>
+            <a
+              href="#process"
+              className="inline-flex items-center rounded-full px-5 py-2.5 border hover:bg-white transition"
+            >
+              See how we work
+            </a>
+          </div>
         </div>
-      </header>
+      </section>
 
-      {/* Hero */}
-      <section className="section">
-        <div className="container grid md:grid-cols-2 gap-10 items-center">
+      {/* SERVICES */}
+      <section id="services" className="mx-auto max-w-7xl px-4 md:px-6 py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold">What we do</h2>
+        <p className="mt-2 text-neutral-700 max-w-2xl">
+          Focused, vendor-neutral work across strategy and execution.
+        </p>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "Advisory",
+              desc: "Audits, roadmaps, and vendor-neutral selection. Clear decisions, faster.",
+            },
+            {
+              title: "Implementation",
+              desc: "ERP & ecommerce integration, payments, and data flows that actually balance.",
+            },
+            {
+              title: "AI & Automation",
+              desc: "AR/AP automation and internal tools that save hours—not another dashboard.",
+            },
+          ].map((item) => (
+            <article
+              key={item.title}
+              className="rounded-2xl border bg-white p-6 hover:shadow-lg hover:-translate-y-0.5 transition"
+            >
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] opacity-90 mb-4" />
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-2 text-neutral-700">{item.desc}</p>
+              <a
+                href="#contact"
+                className="mt-4 inline-block text-sm underline decoration-2 underline-offset-4 decoration-[#6E3AFF] hover:decoration-[#21D07A]"
+              >
+                Start a scope →
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="mx-auto max-w-5xl px-4 md:px-6 py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold">How we work</h2>
+
+        <ol className="relative mt-8 border-s pl-6 space-y-10">
+          {[
+            {
+              t: "Clarity",
+              d: "Short discovery. Ruthless scope. Visible tradeoffs and decisions.",
+            },
+            {
+              t: "Build",
+              d: "Senior hands on keyboards. Prototype early, iterate fast, ship often.",
+            },
+            {
+              t: "Value",
+              d: "Measure impact. If it doesn’t move a KPI, it doesn’t ship.",
+            },
+          ].map((s, i) => (
+            <li key={s.t} className="relative">
+              <span
+                aria-hidden
+                className="absolute -left-3 top-1.5 h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#6E3AFF] to-[#21D07A]"
+              />
+              <h3 className="font-semibold">
+                {i + 1}. {s.t}
+              </h3>
+              <p className="text-neutral-700">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="mx-auto max-w-3xl px-4 md:px-6 py-16">
+        <div className="rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div
+            aria-hidden
+            className="h-1 bg-gradient-to-r from-[#6E3AFF] to-[#21D07A]"
+          />
+          <div className="p-6">
+            <h2 className="text-2xl font-semibold">Get in touch</h2>
+            <p className="mt-1 text-sm text-neutral-600">
+              Tell us what’s going on and we’ll reply with next steps (usually
+              within 1–2 business days).
+            </p>
+
+            {!sent ? (
+              <form onSubmit={onSubmit} className="mt-6 grid gap-4">
+                <label className="text-sm">
+                  Name
+                  <input
+                    name="name"
+                    required
+                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                  />
+                </label>
+                <label className="text-sm">
+                  Email
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                  />
+                </label>
+                <label className="text-sm">
+                  What’s going on?
+                  <textarea
+                    rows={4}
+                    name="message"
+                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                  />
+                </label>
+
+                <div className="flex items-center gap-3">
+                  <button
+                    type="submit"
+                    className="mt-2 inline-flex items-center rounded-full px-5 py-2.5 text-white bg-gradient-to-r from-[#6E3AFF] to-[#21D07A] shadow-sm hover:shadow-md transition"
+                  >
+                    Send
+                  </button>
+                  <a
+                    href="mailto:hello@junova.co"
+                    className="mt-2 text-sm underline decoration-2 underline-offset-4"
+                  >
+                    Or email hello@junova.co
+                  </a>
+                </div>
+              </form>
+            ) : (
+              <div
+                role="status"
+                aria-live="polite"
+                className="mt-6 rounded-lg border bg-neutral-50 p-4"
+              >
+                <p className="font-medium">Thanks! We got your message.</p>
+                <p className="text-sm text-neutral-700">
+                  We’ll reach out shortly. If it’s urgent, email{" "}
+                  <a
+                    className="underline"
+                    href="mailto:hello@junova.co"
+                  >
+                    hello@junova.co
+                  </a>
+                  .
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="mt-8 border-t">
+        <div className="mx-auto max-w-7xl px-4 md:px-6 py-10 grid gap-6 md:grid-cols-3 text-sm">
           <div>
-            <p className="inline-block text-xs font-medium px-3 py-1 rounded-full"
-               style={{ border: "1px solid var(--border-muted)", color: "var(--brand-ink)", background: "var(--surface-2)" }}>
-              Independent, human-first consulting
+            <div className="flex items-center gap-2">
+              <Image
+                src="/junova-logo.png"
+                width={24}
+                height={24}
+                alt="Junova"
+                className="rounded"
+              />
+              <strong>junova</strong>
+            </div>
+            <p className="mt-2 text-neutral-600">
+              Modern systems, human sense.
             </p>
-            <h1 className="mt-4 text-4xl md:text-6xl font-extrabold leading-[1.08] tracking-tight">
-              <span className="bg-clip-text text-transparent" style={{ background: "var(--brand-gradient)" }}>
-                Human. Clear. Shipped.
-              </span>
-            </h1>
-            <p className="mt-4 text-lg max-w-xl opacity-80">
-              We untangle ecommerce, ERP, and AI workflows with senior hands on keyboards.
-              Advisory that actually implements.
-            </p>
-            <div className="mt-8 flex gap-3">
-              <a href="#contact" className="px-5 py-3 rounded-lg text-white font-medium"
-                 style={{ background: "var(--brand-gradient)", boxShadow: "var(--shadow-md)" }}>
-                Talk to us
-              </a>
-              <Link href="#services" className="px-5 py-3 rounded-lg font-medium border"
-                    style={{ borderColor:"var(--border-strong)", background:"var(--surface-2)" }}>
-                See how we work
-              </Link>
-            </div>
           </div>
-
-          {/* Decorative gradient orb */}
-          <div className="relative h-[320px] md:h-[420px]">
-            <div className="absolute inset-0 rounded-2xl"
-                 style={{ background: "var(--gradient-conic)", filter:"blur(30px)", opacity:.9 }} />
-            <div className="absolute inset-6 rounded-2xl bg-white/60 backdrop-blur border"
-                 style={{ borderColor:"var(--border-muted)" }} />
-            <div className="absolute inset-0 grid place-items-center">
-              <div className="icon-chip">
-                {/* minimal robot face */}
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                  <rect x="4.5" y="7" width="15" height="10" rx="4" stroke="white" strokeWidth="2"/>
-                  <circle cx="10" cy="12" r="1.6" fill="white"/>
-                  <circle cx="14" cy="12" r="1.6" fill="white"/>
-                  <path d="M12 7V4.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="4.5" r="1.1" fill="white"/>
-                </svg>
-              </div>
-            </div>
+          <nav className="grid grid-cols-2 gap-2">
+            <a href="#services" className="hover:underline">
+              Services
+            </a>
+            <a href="#process" className="hover:underline">
+              Process
+            </a>
+            <a href="#contact" className="hover:underline">
+              Contact
+            </a>
+            <a href="mailto:hello@junova.co" className="hover:underline">
+              hello@junova.co
+            </a>
+          </nav>
+          <div className="md:text-right text-neutral-600">
+            © {new Date().getFullYear()} Junova
           </div>
-        </div>
-      </section>
-
-      <div className="hr-gradient" />
-
-      {/* Services */}
-      <section id="services" className="section" style={{ background: "var(--surface-3)" }}>
-        <div className="container">
-          <h2 className="text-2xl font-semibold mb-6" style={{ color:"var(--brand-ink)" }}>What we do</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Advisory",
-                body: "Audits, roadmaps, vendor-neutral selection. Clear scope, honest trade-offs, real timelines.",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 12h16M12 4v16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                )
-              },
-              {
-                title: "Implementation",
-                body: "ERP/ecommerce integration, payments, and data flows. Clean, well-documented systems.",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 8h12v8H6z" stroke="white" strokeWidth="2"/><path d="M9 12h6" stroke="white" strokeWidth="2"/>
-                  </svg>
-                )
-              },
-              {
-                title: "AI & Automation",
-                body: "AR/AP automation and internal tools that save hours, not just impress a slide deck.",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                )
-              }
-            ].map((c) => (
-              <div key={c.title} className="card p-6">
-                <div className="icon-chip">{c.icon}</div>
-                <h3 className="mt-4 text-lg font-semibold">{c.title}</h3>
-                <p className="mt-2 text-sm opacity-80">{c.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section id="process" className="section">
-        <div className="container">
-          <h2 className="text-2xl font-semibold mb-6">How we work</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { title:"1. Clarity", body:"Short discovery. Ruthless scope. Visible decisions." },
-              { title:"2. Build", body:"Senior hands on keyboards. Prototype early, iterate fast." },
-              { title:"3. Value", body:"Ship, measure, improve. If it doesn’t move a KPI, it doesn’t ship." }
-            ].map(s => (
-              <div key={s.title} className="card p-6">
-                <h3 className="text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm opacity-80">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA band */}
-      <section className="section">
-        <div className="container">
-          <div className="rounded-2xl p-8 md:p-10 text-white"
-               style={{ background:"var(--brand-gradient)", boxShadow:"var(--shadow-lg)" }}>
-            <h3 className="text-2xl md:text-3xl font-extrabold">The calm in your stack.</h3>
-            <p className="mt-2 opacity-95">Bring us the messy threads. We’ll leave you with systems your team actually likes.</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#contact" className="px-5 py-3 rounded-lg font-medium bg-white/10 backdrop-blur"
-                 style={{ border:"1px solid rgba(255,255,255,0.25)" }}>
-                Start a scope
-              </a>
-              <a href="#contact" className="px-5 py-3 rounded-lg font-medium bg-white text-black">
-                Talk to us
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="section" style={{ background:"var(--surface-3)" }}>
-        <div className="container">
-          <div className="card p-6 md:p-8">
-            <h2 className="text-xl font-semibold">Get in touch</h2>
-            <p className="mt-2 text-sm opacity-80">Drop a note and we’ll reply with next steps.</p>
-            <form className="mt-4 grid gap-3 md:grid-cols-2">
-              <input className="w-full rounded-lg border px-3 py-2 bg-white" placeholder="Name"
-                     style={{ borderColor:"var(--border-strong)" }}/>
-              <input className="w-full rounded-lg border px-3 py-2 bg-white" placeholder="Email" type="email"
-                     style={{ borderColor:"var(--border-strong)" }}/>
-              <textarea className="md:col-span-2 w-full rounded-lg border px-3 py-2 min-h-[120px] bg-white"
-                        placeholder="What do you want to build or fix?"
-                        style={{ borderColor:"var(--border-strong)" }}/>
-              <button type="submit" className="md:col-span-2 rounded-lg text-white px-4 py-3 font-medium"
-                      style={{ background:"var(--brand-gradient)" }}>
-                Send
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-10 border-t" style={{ borderColor:"var(--border-muted)" }}>
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <img src="/junova-wordmark.svg" alt="Junova" width={110} height={22}/>
-            <span className="text-sm opacity-70">© {new Date().getFullYear()} Junova</span>
-          </div>
-          <div className="text-sm opacity-70">Modern systems, human sense.</div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
