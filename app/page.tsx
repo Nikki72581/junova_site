@@ -183,7 +183,7 @@ export default function HomePage() {
                     Send
                   </button>
                   <a href="mailto:hello@junova.co" className="mt-2 text-sm underline decoration-2 underline-offset-4">
-                    Or email hello@junova.co
+                    Or email hi@junova.io
                   </a>
                 </div>
               </form>
@@ -193,7 +193,7 @@ export default function HomePage() {
                 <p className="text-sm text-neutral-700">
                   We’ll reach out shortly. If it’s urgent, email{" "}
                   <a className="underline" href="mailto:hello@junova.co">
-                    hello@junova.co
+                    hi@junova.io
                   </a>.
                 </p>
               </div>
@@ -216,7 +216,8 @@ export default function HomePage() {
             <a href="#services" className="hover:underline">Services</a>
             <a href="#process" className="hover:underline">Process</a>
             <a href="#contact" className="hover:underline">Contact</a>
-            <a href="mailto:hello@junova.co" className="hover:underline">hello@junova.co</a>
+    
+            <a href="mailto:hi@junova.io" className="hover:underline">hi@junova.io</a>
           </nav>
           <div className="md:text-right text-neutral-600">© {new Date().getFullYear()} Junova</div>
         </div>
